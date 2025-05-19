@@ -89,34 +89,72 @@
 
 @layer components {
   .message-bubble {
-    @apply rounded-2xl p-4 max-w-[85%] shadow-sm;
+    @apply rounded-2xl p-4 max-w-[85%] shadow-sm transition-all duration-300 hover:shadow-md;
   }
   
   .user-message {
-    @apply message-bubble bg-secondary text-foreground self-start;
+    @apply message-bubble bg-secondary text-foreground self-start border border-gray-100;
   }
   
   .agent-message {
-    @apply message-bubble bg-white text-foreground self-end;
+    @apply message-bubble bg-white text-foreground self-end border border-gray-100;
   }
   
   .ai-message {
-    @apply message-bubble bg-accent text-foreground self-end;
+    @apply message-bubble bg-accent text-foreground self-end border border-primary/10;
   }
   
   .inbox-item {
-    @apply flex items-center p-3 hover:bg-secondary rounded-lg cursor-pointer transition-all;
+    @apply flex items-center p-4 hover:bg-secondary rounded-lg cursor-pointer transition-all duration-200 gap-3;
   }
   
   .inbox-item.active {
-    @apply bg-secondary;
+    @apply bg-secondary border-l-4 border-l-primary;
   }
 
   .avatar-circle {
-    @apply flex items-center justify-center w-10 h-10 rounded-full text-white font-semibold;
+    @apply flex items-center justify-center rounded-full text-white font-semibold transition-transform hover:scale-105;
   }
 
   .sidebar-section {
     @apply border-b border-gray-200 py-4;
+  }
+
+  /* New animations */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-in {
+    @apply animate-slide-in;
+  }
+  
+  .scale-in {
+    @apply animate-scale-in;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl;
   }
 }
