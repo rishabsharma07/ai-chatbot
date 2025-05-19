@@ -7,6 +7,35 @@ interface AvatarProps {
   className?: string;
 }
 
+const gradientMap: Record<string, string> = {
+  A: "gradient-purple",
+  B: "gradient-blue",
+  C: "gradient-green",
+  D: "gradient-yellow",
+  E: "gradient-accent",
+  F: "gradient-primary",
+  G: "gradient-pink",
+  H: "gradient-orange",
+  I: "gradient-teal",
+  J: "gradient-blue",
+  K: "gradient-orange",
+  L: "gradient-purple",
+  M: "gradient-pink",
+  N: "gradient-accent",
+  O: "gradient-orange",
+  P: "gradient-primary",
+  Q: "gradient-teal",
+  R: "gradient-purple",
+  S: "gradient-blue",
+  T: "gradient-teal",
+  U: "gradient-accent",
+  V: "gradient-pink",
+  W: "gradient-yellow",
+  X: "bg-gray-500",
+  Y: "gradient-yellow",
+  Z: "gradient-green",
+};
+
 const colorMap: Record<string, string> = {
   A: "bg-red-500",
   B: "bg-blue-500",
@@ -51,13 +80,17 @@ const Avatar = ({ name, size = "md", className }: AvatarProps) => {
     .toUpperCase();
   
   const firstLetter = initials[0] || "A";
-  const bgColor = firstLetter === "F" ? "bg-primary" : colorMap[firstLetter] || "bg-purple-500";
+  
+  // Use gradient backgrounds for special cases
+  const bgClass = name === "Fin AI" ? "gradient-primary" : 
+                  firstLetter === "F" ? "gradient-primary" : 
+                  gradientMap[firstLetter] || colorMap[firstLetter] || "bg-purple-500";
 
   return (
     <div 
       className={cn(
         "avatar-circle", 
-        bgColor,
+        bgClass,
         sizeClassMap[size],
         className
       )}
@@ -68,3 +101,4 @@ const Avatar = ({ name, size = "md", className }: AvatarProps) => {
 };
 
 export default Avatar;
+

@@ -19,6 +19,22 @@
   filter: drop-shadow(0 0 2em rgba(139, 92, 246, 0.7));
 }
 
+/* Gradient animations for logos */
+.logo-gradient {
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.7), 
+    rgba(217, 70, 239, 0.7), 
+    rgba(139, 92, 246, 0.7));
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,3 +57,37 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Gradient cards and effects */
+.gradient-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(139, 92, 246, 0.7), 
+    rgba(217, 70, 239, 0.7), 
+    rgba(59, 130, 246, 0.7), 
+    rgba(139, 92, 246, 0.7));
+  background-size: 400% 400%;
+  animation: gradient-shift 5s ease infinite;
+  z-index: -1;
+  border-radius: 16px;
+}
+
