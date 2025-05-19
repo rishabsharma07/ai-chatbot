@@ -16,22 +16,22 @@ const Message = ({ message, sender }: MessageProps) => {
 
   return (
     <div
-      className={cn("flex items-start gap-3 py-2", {
+      className={cn("flex items-start gap-2 sm:gap-3 py-2", {
         "justify-start": isUserMessage,
         "justify-end": !isUserMessage,
         "animate-slide-in": true,
       })}
     >
-      {isUserMessage && <Avatar name={sender.name} className="mt-1" />}
+      {isUserMessage && <Avatar name={sender.name} className="mt-1" size="sm" />}
       
       <div
         className={cn({
           "user-message": isUserMessage,
           "agent-message": !isUserMessage && !isAiMessage,
           "ai-message": isAiMessage,
-        })}
+        }, "max-w-[75%] sm:max-w-[85%]")}
       >
-        <div className="whitespace-pre-wrap">{message.content}</div>
+        <div className="whitespace-pre-wrap text-sm sm:text-base">{message.content}</div>
         <div className={cn(
           "text-xs mt-1", 
           isUserMessage ? "text-left" : "text-right",
@@ -41,7 +41,7 @@ const Message = ({ message, sender }: MessageProps) => {
         </div>
       </div>
       
-      {!isUserMessage && <Avatar name={isAiMessage ? "Fin AI" : "Agent"} className="mt-1" />}
+      {!isUserMessage && <Avatar name={isAiMessage ? "Fin AI" : "Agent"} className="mt-1" size="sm" />}
     </div>
   );
 };

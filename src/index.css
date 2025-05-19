@@ -85,11 +85,16 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  
+  /* Improve mobile text selection */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
 }
 
 @layer components {
   .message-bubble {
-    @apply rounded-2xl p-4 max-w-[85%] shadow-sm transition-all duration-300 hover:shadow-md;
+    @apply rounded-2xl p-3 md:p-4 max-w-[85%] shadow-sm transition-all duration-300 hover:shadow-md;
   }
   
   .user-message {
@@ -105,7 +110,7 @@
   }
   
   .inbox-item {
-    @apply flex items-center p-4 hover:bg-secondary rounded-lg cursor-pointer transition-all duration-200 gap-3;
+    @apply flex items-center p-3 md:p-4 hover:bg-secondary rounded-lg cursor-pointer transition-all duration-200 gap-2 md:gap-3;
   }
   
   .inbox-item.active {
@@ -136,6 +141,13 @@
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .message-bubble {
+      @apply text-sm max-w-[90%];
+    }
+  }
 }
 
 @keyframes fade-in {
@@ -153,8 +165,29 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
 @layer utilities {
   .glass {
     @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }

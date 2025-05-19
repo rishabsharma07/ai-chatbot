@@ -37,9 +37,9 @@ const colorMap: Record<string, string> = {
 };
 
 const sizeClassMap = {
-  sm: "w-8 h-8 text-sm",
-  md: "w-10 h-10 text-base",
-  lg: "w-12 h-12 text-lg",
+  sm: "w-6 h-6 text-xs md:w-8 md:h-8 md:text-sm",
+  md: "w-8 h-8 text-sm md:w-10 md:h-10 md:text-base",
+  lg: "w-10 h-10 text-base md:w-12 md:h-12 md:text-lg",
 };
 
 const Avatar = ({ name, size = "md", className }: AvatarProps) => {

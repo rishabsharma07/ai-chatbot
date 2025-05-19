@@ -26,34 +26,36 @@ const InboxItem = ({ conversation, isActive, onClick }: InboxItemProps) => {
       })}
       onClick={onClick}
     >
-      <Avatar name={customer.name} className="flex-shrink-0" />
+      <Avatar name={customer.name} className="flex-shrink-0" size="sm" />
       
-      <div className="ml-3 flex-1 overflow-hidden">
-        <div className="flex justify-between items-center">
-          <span className={cn("font-semibold text-sm", { "text-primary": unread })}>
+      <div className="flex-1 overflow-hidden">
+        <div className="flex justify-between items-center flex-wrap">
+          <span className={cn("font-semibold text-xs sm:text-sm", { "text-primary": unread })}>
             {customer.name}
             {customer.company && (
-              <span className="text-gray-500 font-normal ml-1">
+              <span className="text-gray-500 font-normal ml-1 hidden sm:inline">
                 · {customer.company}
               </span>
             )}
           </span>
-          <span className="text-xs text-gray-500">{lastMessageTime}</span>
+          <span className="text-xs text-gray-500 ml-auto">{lastMessageTime}</span>
         </div>
-        <p className={cn("text-sm truncate text-gray-600", { "font-semibold": unread })}>
-          {truncateText(lastMessage)}
+        <p className={cn("text-xs sm:text-sm truncate text-gray-600", { "font-semibold": unread })}>
+          {truncateText(lastMessage, 40)}
         </p>
       </div>
       
-      {unread && (
-        <div className="ml-2 w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-      )}
-      
-      {priority === "high" && (
-        <div className="ml-2 px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs">
-          3min
-        </div>
-      )}
+      <div className="flex flex-col items-end gap-1 ml-1">
+        {unread && (
+          <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+        )}
+        
+        {priority === "high" && (
+          <div className="px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs">
+            3min
+          </div>
+        )}
+      </div>
     </div>
   );
 };
