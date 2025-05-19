@@ -33,7 +33,7 @@ const ChatComposer = ({ onSendMessage }: ChatComposerProps) => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type your message..."
-          className="flex-1 border border-gray-300 rounded-full py-1.5 md:py-2 px-3 md:px-4 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-sm md:text-base"
+          className="flex-1 border border-gray-300 rounded-full py-1.5 md:py-2 px-3 md:px-4 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm md:text-base"
         />
         
         <button

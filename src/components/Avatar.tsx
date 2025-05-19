@@ -12,7 +12,7 @@ const colorMap: Record<string, string> = {
   B: "bg-blue-500",
   C: "bg-green-500",
   D: "bg-yellow-500",
-  E: "bg-purple-500",
+  E: "bg-purple-400",
   F: "bg-pink-500",
   G: "bg-indigo-500",
   H: "bg-purple-500",
@@ -51,7 +51,7 @@ const Avatar = ({ name, size = "md", className }: AvatarProps) => {
     .toUpperCase();
   
   const firstLetter = initials[0] || "A";
-  const bgColor = colorMap[firstLetter] || "bg-purple-500";
+  const bgColor = firstLetter === "F" ? "bg-primary" : colorMap[firstLetter] || "bg-purple-500";
 
   return (
     <div 

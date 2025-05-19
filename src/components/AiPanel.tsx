@@ -34,7 +34,7 @@ const AiPanel = ({ conversationId, onAskQuestion }: AiPanelProps) => {
 
   return (
     <div className="bg-white flex flex-col h-full overflow-hidden">
-      <div className="border-b p-3 md:p-4 flex justify-between items-center">
+      <div className="border-b p-3 md:p-4 flex justify-between items-center bg-secondary/30">
         <div className="flex items-center gap-2">
           <Avatar name="Fin AI" size="sm" />
           <span className="font-semibold text-sm md:text-base">AI Copilot</span>
@@ -74,7 +74,7 @@ const AiPanel = ({ conversationId, onAskQuestion }: AiPanelProps) => {
       </div>
       
       {!showFullResponse && (
-        <div className="p-3 md:p-4 border-t">
+        <div className="p-3 md:p-4 border-t bg-secondary/30">
           <h4 className="text-xs md:text-sm text-gray-500 mb-2">Suggested</h4>
           <div className="space-y-2">
             {suggestedQuestions.map((question) => (
