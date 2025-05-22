@@ -1,6 +1,6 @@
 ## Project info
 
-**URL**: 
+**URL**: https://ai-chatbot-flax-xi.vercel.app/
 
 
 
